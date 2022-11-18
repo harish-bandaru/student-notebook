@@ -123,11 +123,15 @@ function getUsers() {
     fetch('http://localhost:3000/users')
     .then((res) => res.json()) //JSON.parse(res)
     .then((data) => {
-        let ul = document.getElementById("allUsers");
+        //let ul = document.getElementById("allUsers");
         data.forEach((user) => {
-            let li = document.createElement('li');
-            let text = document.createTextNode(user.userName);
-            li.appendChild(text);
+            let section = `
+            <div class="user">
+              <h2>${user.uname}</h2>
+              <p>${user.pword}</p>
+            </div>
+          `
+          getUsers.innerHTML+=section;
         })
 
     .catch(err => {
