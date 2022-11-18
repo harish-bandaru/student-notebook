@@ -1,0 +1,31 @@
+{
+  "name": "student-notebook",
+  "version": "1.0.0",
+  "description": "This is a project that will be done as a part of my course work in web and database programming",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harish-bandaru/student-notebook.git"
+  },
+  "author": "HarishBandaru",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/harish-bandaru/student-notebook/issues"
+  },
+  "homepage": "https://github.com/harish-bandaru/student-notebook#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "keywords": [
+    "notes",
+    "app"
+  ]
+}

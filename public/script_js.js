@@ -11,17 +11,12 @@ function loginpageFunction(e)
     e.preventDefault();
     let username=document.getElementById('username').value;
     let password=document.getElementById('passwd').value;
-
-
     class User{
         constructor(username,password)
         {
             this.uname=username;
             this.pword=password;
         }
-    
-    
-    
     getuname(){
         return this.uname;
     }
@@ -116,3 +111,27 @@ function notepageFunction(e)
     console.log(Userl);
 
 }
+
+
+//--------------------------------------------------------------------------------------------
+const usersBtn = document.getElementById("users-btn");
+document.getElementById("users-btn").addEventListener('click', getUsers);
+
+function getUsers() {
+  //e.preventDefault();
+  if(getUsers.innerText === "") {
+    fetch('http://localhost:3000/users')
+    .then((res) => res.json()) //JSON.parse(res)
+    .then((data) => {
+        let ul = document.getElementById("allUsers");
+        data.forEach((user) => {
+            let li = document.createElement('li');
+            let text = document.createTextNode(user.userName);
+            li.appendChild(text);
+        })
+
+    .catch(err => {
+      console.log(err);
+    })
+    })
+}}
