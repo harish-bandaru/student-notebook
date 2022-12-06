@@ -1,7 +1,6 @@
 const login = document.getElementById("loginForm");
 const register = document.getElementById("regForm");
 const note = document.getElementById("noteForm")
-
 if(login) login.addEventListener('submit',loginpageFunction)
 if(register) register.addEventListener('submit',registerpageFunction)
 if(note) note.addEventListener('submit',notepageFunction)
@@ -14,29 +13,25 @@ function loginpageFunction(e)
     class User{
         constructor(username,password)
         {
-            this.uname=username;
-            this.pword=password;
+            this.userName=username;
+            this.password=password;
         }
     getuname(){
-        return this.uname;
+        return this.userName;
     }
     setuname(newusername){
-        this.uname = username;
+        this.userName = username;
     }
     getpword(){
-        return this.pword;
+        return this.password;
     }
     setpword(newpassword){
-        this.pword = password
+        this.password = password
     }
-
     }
-
     const Userl=new User(username,password);
     console.log(Userl);
-
 }
-
 
 function registerpageFunction(e)
 {
@@ -79,11 +74,9 @@ function registerpageFunction(e)
             this.lastname=newlastname;
         }
     }
-
     const user1=new User(fname,lname,email,password);
     console.log(user1);
 }
-
 
 function notepageFunction(e)
 {
@@ -95,18 +88,14 @@ function notepageFunction(e)
         {
             this.tnotes=note;
         }
-    
-    
+
     gettnotes(){
         return this.tnotes;
     }
     settnotes(note){
         this.tnotes = note;
     }
-   
-
     }
-
     const Userl=new User(note);
     console.log(Userl);
 
@@ -123,15 +112,20 @@ function getUsers() {
     fetch('http://localhost:3000/users')
     .then((res) => res.json()) //JSON.parse(res)
     .then((data) => {
-        //let ul = document.getElementById("allUsers");
+        let ul = document.getElementById("allUsers");
+        console.log(ul)
         data.forEach((user) => {
-            let section = `
+            let li = document.createElement('li');
+            let text = document.createTextNode(user.userName);
+            li.appendChild(text);
+            ul.appendChild(li);
+            /*let section = `
             <div class="user">
               <h2>${user.uname}</h2>
               <p>${user.pword}</p>
             </div>
           `
-          getUsers.innerHTML+=section;
+          getUsers.innerHTML+=section;*/
         })
 
     .catch(err => {
