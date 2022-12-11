@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
         res.status(401).send({message : err.message});
     }
 });
-.put('/edit', async (req, res) => {
+router.put('/edit', async (req, res) => {
     try {
       let note = await note.editNotes(req.body);
       res.send({...note});
@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
     }
   })
 
-  .delete('/delete', async (req, res) => {
+router.delete('/delete', async (req, res) => {
     try {
       note.deleteNote(req.body);
       res.send({success})

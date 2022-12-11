@@ -1,30 +1,3 @@
-/*const users = [{
-    userId: 12345 ,
-    userName: "HariBandaru",
-    password: "Default123",
-    fullName: "HarishBabuBandaru"
-},
-{
-    userId: 12346,
-    userName: "ArjunA",
-    password: "Default123",
-    fullName: "ArjunAllu"
-}, 
-{
-    userId: 12347,
-    userName: "NishaK",
-    password: "Default123",
-    fullName: "NishaKajal"
-}]
-
-function getAllUsers() {
-    return users;
-  }
-
-//let getUsers = () => users;
-
-module.exports = { getAllUsers };*/
-
 const con = require("./db_connect");
 
 async function createTable(){
@@ -33,7 +6,7 @@ async function createTable(){
         userName VARCHAR(255) NOT NULL UNIQUE,
         password VARCHAR(255),
         fullName VARCHAR(255),
-    CONSTRAINT user_pk PRIMARY KEY (user_id)
+    CONSTRAINT user_pk PRIMARY KEY (userID)
     )`;
     await con.query(sql);
 }

@@ -68,6 +68,11 @@ async function getNote(note){
     if (note.noteID){
         sql=`SELECT * FROM notes
         WHERE noteID = ${note.noteID}`;
-    } 
+    } else {
+        sql = `
+        SELECT * FROM notes 
+          WHERE userID = "${note.userID}"
+      `;
+      }
     return await con.query(sql);
 }

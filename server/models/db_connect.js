@@ -1,7 +1,8 @@
 require('dotenv').config();
+//const mysql = require('mysql2/promise');
 const mysql = require('mysql2');
-
-const con = mysql.createPool({
+//const con = mysql.createPool({
+const con = mysql.createConnection({
   host: process.env.MYSQL_HOST,
   user: process.env.MYSQL_USERNAME,
   password: process.env.MYSQL_PASSWORD,
@@ -17,16 +18,13 @@ const query = (sql, binding) => {
   })
 }
 
-module.exports = {con, query};
-
 con.connect(function(err){
     if (err) throw err;
     console.log("connected");
-    con.query("CREATE DATABASE IF NOT EXISTS student_notes", function(err, result){
+    con.query("CREATE DATABASE IF NOT EXISTS student_notes;", function(err, result){
         if (err) throw err;
-        console.log("Database created");
+        console.log("Database student_notes created");
     });
 
 });
-
-module.exports = con;
+module.exports = {con, query};
