@@ -95,7 +95,7 @@ function registerPageFunction(e){
     fetchData("/user/register", user, "POST")
     .then((data) => {
       setCurrentUser(data);
-      window.location.href = "login.html";
+      window.location.href = "note.html";
     })
     .catch((err) =>{
       console.log(err);
@@ -112,9 +112,9 @@ function notePageFunction(e){
 
     const note = new Note(notes);
     console.log(note);
-    fetchData("/note/edit", note, "POST")
+    fetchData("/note/create", note, "POST")
     .then((data) => {
-      setCurrentUser(data);
+      //setCurrentUser(data);
       window.location.href = "note.html";
     })
     .catch((err) =>{

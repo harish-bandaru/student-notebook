@@ -37,6 +37,14 @@ async function getAllNotes(){
     console.log(notes)
 }
 
+//create notes
+async function createNote(note){
+    //let cNote=await getNote(note);
+    //const sql=`INSERT INTO notes(noteContent,userID) VALUES ("${note.noteContent}",${note.userID});`
+    const sql=`INSERT INTO notes(noteContent) VALUES ("${note.noteContent}");`
+    await con.query(sql);
+    
+}
 //read notes
 async function fetch(note){
     let cNote = await getNote(note);
@@ -76,3 +84,5 @@ async function getNote(note){
       }
     return await con.query(sql);
 }
+
+module.exports = { createNote};
