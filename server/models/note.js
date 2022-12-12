@@ -39,9 +39,7 @@ async function getAllNotes(){
 
 //create notes
 async function createNote(note){
-    //let cNote=await getNote(note);
-    //const sql=`INSERT INTO notes(noteContent,userID) VALUES ("${note.noteContent}",${note.userID});`
-    const sql=`INSERT INTO notes(noteContent) VALUES ("${note.noteContent}");`
+    const sql=`INSERT INTO notes(noteContent,userID) VALUES ("${note.noteContent}",${note.userID});`
     await con.query(sql);
     
 }

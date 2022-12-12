@@ -109,13 +109,13 @@ if(note) note.addEventListener('submit',notePageFunction)
 function notePageFunction(e){
     e.preventDefault();
     let notes = document.getElementById('note').value;
-
-    const note = new Note(notes);
+    let note = new Note(notes);
+    let user = getCurrentUser();
+    note.userID = user.userID;
     console.log(note);
     fetchData("/note/create", note, "POST")
     .then((data) => {
-      //setCurrentUser(data);
-      window.location.href = "note.html";
+      //window.location.href = "note.html";
     })
     .catch((err) =>{
       console.log(err);
@@ -123,12 +123,10 @@ function notePageFunction(e){
     document.getElementById("noteForm").reset();
 }
 
-/*
-// logout event listener
-let logout = document.getElementById("logout-btn");
-if(logout) logout.addEventListener('click', removeCurrentUser)
 
-*/
+// logout event listener
+let logout = document.getElementById("Logout");
+if(logout) logout.addEventListener('click', removeCurrentUser);
 
 
 // stateful mechanism for user
@@ -147,7 +145,8 @@ function setCurrentUser(user) {
   
   // logout function for current user
   function removeCurrentUser() {
-    localStorage.removeItem('user')
+    localStorage.removeItem('user');
+    window.location.href = "login.html";
   }
 
 
