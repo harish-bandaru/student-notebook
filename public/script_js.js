@@ -74,6 +74,8 @@ function loginPageFunction(e){
       window.location.href = "note.html";
     })
     .catch((err) => {
+      let p = document.querySelector('.error');
+      p.innerHTML = err.message;
       console.log(`Error!!! ${err.message}`)
     }) 
 
@@ -98,9 +100,12 @@ function registerPageFunction(e){
       window.location.href = "note.html";
     })
     .catch((err) =>{
+      let p = document.querySelector('.error');
+      p.innerHTML = err.message;
       console.log(err);
     })
     document.getElementById("registerForm").reset();
+    
 }
 
 //Note Functionality
@@ -108,16 +113,20 @@ const note = document.getElementById("noteForm");
 if(note) note.addEventListener('submit',notePageFunction)
 function notePageFunction(e){
     e.preventDefault();
+    
     let notes = document.getElementById('note').value;
     let note = new Note(notes);
     let user = getCurrentUser();
     note.userID = user.userID;
     console.log(note);
+    //getNotes()
     fetchData("/note/create", note, "POST")
     .then((data) => {
-      //window.location.href = "note.html";
+      window.location.href = "note.html";
     })
     .catch((err) =>{
+      let p = document.querySelector('.error');
+      p.innerHTML = err.message;
       console.log(err);
     })
     document.getElementById("noteForm").reset();
@@ -130,11 +139,10 @@ if(logout) logout.addEventListener('click', removeCurrentUser);
 
 
 // stateful mechanism for user
-// logging in a user
+// setting up current user in local storage
 function setCurrentUser(user) {
     console.log("adding ${user} to local storage");
     localStorage.setItem('user', JSON.stringify(user));
-    console.log("added")
   }
   
   // getting current user function
@@ -150,34 +158,18 @@ function setCurrentUser(user) {
   }
 
 
-/*---------------------------
-const usersBtn = document.getElementById("loginForm");
-document.getElementById("users-btn").addEventListener('click', getUsers);
-
-function getUsers() {
-  //e.preventDefault();
-  if(getUsers.innerText === "") {
-    fetch('http://localhost:3000/users')
-    .then((res) => res.json()) //JSON.parse(res)
-    .then((data) => {
-        let ul = document.getElementById("allUsers");
-        console.log(ul)
-        data.forEach((user) => {
-            let li = document.createElement('li');
-            let text = document.createTextNode(user.userName);
-            li.appendChild(text);
-            ul.appendChild(li);
-            /*let section = `
-            <div class="user">
-              <h2>${user.uname}</h2>
-              <p>${user.pword}</p>
-            </div>
-          `
-          getUsers.innerHTML+=section;
-        })
-
-    .catch(err => {
-      console.log(err);
-    })
-    })
-}} */
+function getNotes(){
+  let user = getCurrentUser();
+  fetchData("/note/", user, "POST")
+  .then((data)=>{
+      let ul=document.getElementById("notesList");
+      //console.log(data)
+      data.forEach((note)=>{
+          let li=document.createElement('li');
+          let text=document.createTextNode(note.noteContent);
+          li.appendChild(text);
+          ul.appendChild(li);
+      })
+  })
+  .catch((err)=>console.log(`Error! ${err}`));
+}

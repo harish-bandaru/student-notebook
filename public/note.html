@@ -16,20 +16,27 @@
         
         <nav class="flexibox">
             <a href="note.html">NOTE</a><br>
-            <!--<a href="login.html">LOGOUT</a>-->
             <a id="Logout">LOGOUT</a>
         </nav>
             <main class="middle">
                 <form id="noteForm">
+                    <p class = "error"></p>
                     <label for="Notes"><b>Please enter the notes<b></label><br>
-                    <input type="text" id="note"><br>
+                    <textarea id="note" rows = "5" cols = "60" name = "note">
+                        
+                    </textarea><br>
+                    <label style="color: black;font-weight: 500;font-size: small;"><h9>Please click on the create button to save and display your note</h9></label>
+                    <!--<input type="text" id="note" size="50"><br>-->
                     <br>
                     <input type="submit" value="Create">
-                    <!--<br>
                     <br>
-                    <button id="Get-Notes">Get all Notes</button>-->
                 </form>
+                <br>
+                <br>
+                <label style="color: black;font-weight: 500;font-size: medium;">All your previously saved notes are shown below</label>
+                <ol id="notesList"></ol>
             </main>
             <script src="./script_js.js"></script>
+            <script src="./scripts/note.js"></script>
     </body>
 </html>

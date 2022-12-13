@@ -1,21 +1,3 @@
-/*const notes = [{
-    userId: "12345",
-    noteId: "1",
-    noteContent: "Hello This is my first note" 
-    }, {
-    userId: "12346",
-    noteId: "2",
-    noteContent: "Hello This is my second note" 
-    }, {
-    userId: "12347",
-    noteId: "3",
-    noteContent: "Hello This is my third note" 
-    }
-]
-let getNotes = () => notes;
-
-module.exports = { getNotes };*/
-
 const con = require("./db_connect");
 
 async function createTable(){
@@ -24,7 +6,7 @@ async function createTable(){
         noteContent VARCHAR(255),
         userID INT,
         CONSTRAINT notes_pk PRIMARY KEY (noteID),
-        FOREIGN KEY (userID) REFERENCES users(userID)
+        CONSTRAINT notes_fk FOREIGN KEY (userID) REFERENCES users(userID)
     )`;
     await con.query(sql);
 }
@@ -32,9 +14,11 @@ createTable();
 
 //get all notes
 async function getAllNotes(){
-    const sql = `SELECT * FROM notes;`;
+    //console.log("notes from models function getnotes")
+    const sql = `SELECT * FROM notes`
     let notes = await con.query(sql);
-    console.log(notes)
+    //console.log(notes)
+    return notes;
 }
 
 //create notes
@@ -71,16 +55,16 @@ await con.query(sql);
 //Useful functions
 async function getNote(note){
     let sql;
-    if (note.noteID){
+    if (note.userID){
         sql=`SELECT * FROM notes
-        WHERE noteID = ${note.noteID}`;
+        WHERE userID = ${note.userID}`;
     } else {
         sql = `
         SELECT * FROM notes 
-          WHERE userID = "${note.userID}"
+          WHERE noteID = "${note.noteID}"
       `;
       }
     return await con.query(sql);
 }
 
-module.exports = { createNote};
+module.exports = { createNote, getAllNotes, getNote};
