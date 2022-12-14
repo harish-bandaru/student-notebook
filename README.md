@@ -12,9 +12,24 @@ This is a project to register, login and save notes.
 
 
 The below screenshot is the ER Diagram of this project.
+
 ![Tux, ER diagram](/public/images/ER_diagram.png)
 
+#Databse and table names used:
+
+Database name: student_notes 
+
+tables name: users, notes
+
+#Login page will be avaialble after staring the server successfully at http://localhost:3000/
+
+#server started successfully
+
+![server](https://user-images.githubusercontent.com/40355445/207686181-53c9c487-8fac-4d9b-8f5d-29f9d1b22244.PNG)
+
+
 ##snapshot of a project
+
 Sharing all the screens of the projects for register, login and notes below.
 
 ##Login page
