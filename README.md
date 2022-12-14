@@ -18,30 +18,37 @@ The below screenshot is the ER Diagram of this project.
 Sharing all the screens of the projects for register, login and notes below.
 
 ##Login page
-![Tux, Login](/public/images/login.png)
+
+![login](https://user-images.githubusercontent.com/40355445/207682209-68afb1ed-5cfc-44af-a7d2-50dc00c935c8.PNG)
 
 ##Register page
-![Tux, Register](/public/images/register.png)
 
-##Notes
-![Tux, notes](/public/images/notes.png)
+![register](https://user-images.githubusercontent.com/40355445/207682512-d3be8440-4cc4-4a87-9f4a-72fef1a66078.PNG)
+
+##Notes for new users
+
+![notes](https://user-images.githubusercontent.com/40355445/207682889-83dcd316-a54a-4ae5-8489-87e8095128ac.PNG)
+
+##Notes page for returning users[whose notes are already available in database]
+
+![notesWithData](https://user-images.githubusercontent.com/40355445/207684100-77be5cca-aaea-4395-8458-70eb214a76c6.PNG)
 
 ##some Errors we encounter are captured below
 
 ##Login page : when user does not exist
 
-![Tux, login username error](/public/images/login_username_error.png)
+![login_username_error](https://user-images.githubusercontent.com/40355445/207683019-f9e2060e-d5e8-46c8-b8c4-a82fa7cfd2fc.PNG)
 
 user need to enter the correct user name or register the new user
 
 ##Login page: when password is incorrect
 
-![Tux, login password error](/public/images/login_password_error.png)
+![login_password_error](https://user-images.githubusercontent.com/40355445/207683180-cebdd6cc-3bad-4b02-a3aa-62442855c438.PNG)
 
 User need to keyin the exact password used during register
 
 ##Register page : when registering the existing user
 
-![Tux, register username error](/public/images/register_username_error.png)
+![register_username_error](https://user-images.githubusercontent.com/40355445/207683255-4ad2e4a6-4a5e-4a21-81dd-eddaaf5d6efd.PNG)
 
 User must enter the new username not the existing one
